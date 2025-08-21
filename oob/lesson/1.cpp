@@ -1,67 +1,81 @@
 #include <iostream>
-using namespace std; 
+#include <algorithm>
+using namespace std;
 
+class Car {
+private:
+    string brand;
+    string model;
+    int year;
 
-// Definition 
-class car {
-private: 
-bool isExpired() {
-int currentYear = 2025;
-return (currentYear -  year ) > 15 ;
+    bool isExpired() {
+        int currentYear = 2025;
+        return (currentYear - year) > 15;
+    }
 
+public:
+    // Setters
+    void setBrand(string n) {
+        n.erase(remove_if(n.begin(), n.end(), ::isdigit), n.end());
+        brand = n;
+    }
 
-}
+    void setModel(string m) {
+        model = m;
+    }
 
+    void setYear(int y) {
+        year = y;
+    }
 
+    // Getters
+    string getBrand() { return brand; }
+    string getModel() { return model; }
+    int getYear() { return year; }
 
-public: 
-// Properties 
-string brands;
-string model;
-int year;
-
-// Methode 
-
-void displayinfo() {
-cout << "Brands:" <<brands<< endl;
-cout << "model: " <<model<< endl;
-cout << "year: " <<year << endl;
-cout << "Expired "  << (isExpired () ? "Yes " : "No") << endl;
-}
+    // Display method
+    void displayInfo() {
+        cout << "Brand: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "Year: " << year << endl;
+        cout << "Expired: " << (isExpired() ? "Yes" : "No") << endl;
+    }
 };
 
-int main () {
-    //object 
-car car1;
-car car2;
-cout << "Enter the the name of first car: ";
-cin >>car1.brands;  
+int main() {
+    Car car1, car2;
+    string input;
+    int year;
 
-cout << "Enter the the name of second car: ";
-cin >>car2.brands; 
+    cout << "Enter the name of first car: ";
+    cin >> input;
+    car1.setBrand(input);
 
+    cout << "Enter the name of second car: ";
+    cin >> input;
+    car2.setBrand(input);
 
+    cout << "Enter the model of first car: ";
+    cin >> input;
+    car1.setModel(input);
 
+    cout << "Enter the model of second car: ";
+    cin >> input;
+    car2.setModel(input);
 
- 
+    cout << "Enter the year of first car: ";
+    cin >> year;
+    car1.setYear(year);
 
+    cout << "Enter the year of second car: ";
+    cin >> year;
+    car2.setYear(year);
 
-cout << "Enter the the name of modul car: ";
-cin >>car1.model;
-cout << "Enter the the name of modul  car: ";
-cin >>car2.model; 
+    cout << "\n--- Car 1 Info ---\n";
+    car1.displayInfo();
 
-cout << "Enter the the name of year car: ";
-cin >>car1.year;
-cout << "Enter the the name of year  car: ";
-cin >>car2.year;
-
-
-
-
-car1.displayinfo() ;
-car2.displayinfo() ;
-
+    cout << "\n--- Car 2 Info ---\n";
+    car2.displayInfo();
 
     return 0;
 }
