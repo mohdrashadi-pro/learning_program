@@ -4,13 +4,13 @@
 using namespace std;
 
 // display a number
-void displayNum(int n1, float n2) {
+void displayNum(int n1, float n2, int num3) {
     cout << "The int number is " << n1;
     cout << "The double number is " << n2;
 }
 
 int main() {
-     
+     int num3;
      int num1 = 5;
      double num2 = 5.5;
 
