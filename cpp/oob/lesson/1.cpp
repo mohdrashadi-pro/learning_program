@@ -34,7 +34,7 @@ public:
     int getYear() { return year; }
 
     // Display method
-    void displayInfo() {
+    virtual void displayInfo() {   // virtual so derived class can override
         cout << "Brand: " << brand << endl;
         cout << "Model: " << model << endl;
         cout << "Year: " << year << endl;
@@ -42,40 +42,52 @@ public:
     }
 };
 
+// Derived class
+class ElectricCar : public Car {
+private: 
+    int batteryCapacity;
+
+public:
+    void setBatteryCapacity(int b) {
+        batteryCapacity = b;
+    }
+
+    int getBatteryCapacity() {
+        return batteryCapacity;
+    }
+
+    // Override displayInfo to also show battery info
+    void displayInfo() override {
+        Car::displayInfo(); // call base class method
+        cout << "Battery Capacity: " << batteryCapacity << " kWh" << endl;
+    }
+};
+
 int main() {
     Car car1, car2;
-    string input;
-    int year;
+    ElectricCar ecar1;
 
-    cout << "Enter the name of first car: ";
-    cin >> input;
-    car1.setBrand(input);
+    car1.setBrand("Toyota");
+    car1.setModel("Camry");
+    car1.setYear(2010);
 
-    cout << "Enter the name of second car: ";
-    cin >> input;
-    car2.setBrand(input);
-
-    cout << "Enter the model of first car: ";
-    cin >> input;
-    car1.setModel(input);
-
-    cout << "Enter the model of second car: ";
-    cin >> input;
-    car2.setModel(input);
-
-    cout << "Enter the year of first car: ";
-    cin >> year;
-    car1.setYear(year);
-
-    cout << "Enter the year of second car: ";
-    cin >> year;
-    car2.setYear(year);
+    car2.setBrand("Honda");
+    car2.setModel("Civic");
+    car2.setYear(2018);
 
     cout << "\n--- Car 1 Info ---\n";
     car1.displayInfo();
 
     cout << "\n--- Car 2 Info ---\n";
     car2.displayInfo();
+
+    ecar1.setBrand("Tesla");
+    ecar1.setModel("Model S");
+    ecar1.setYear(2022);
+    ecar1.setBatteryCapacity(100);
+
+    cout << "\n--- Electric Car Info ---\n";
+    ecar1.displayInfo();
 
     return 0;
 }
