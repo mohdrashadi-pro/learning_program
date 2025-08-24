@@ -1,10 +1,12 @@
 #include <iostream>
 using namespace std;
 
+
 int main () {
 
+int i;
 
-cout <<"Hell  "  ;  cout << 1 + 43 << endl;
+
 
 
 
