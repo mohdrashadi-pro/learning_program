@@ -21,8 +21,8 @@ x = 15;
 
 cout << "Value *y after changeing x : " << *y << endl;
 
-delete y;
-cout << "Value *y after changeing y : " << y << endl;
+// cleanup 
+
 
 
     return 0;

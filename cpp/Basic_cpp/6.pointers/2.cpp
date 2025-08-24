@@ -2,9 +2,9 @@
 using namespace std;
 
 int main () {
+string x = "hello ";
+cout << x;
 
-
-cout <<"Hello world   "  ; 
 
 
 
